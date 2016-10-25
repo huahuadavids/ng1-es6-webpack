@@ -3,11 +3,12 @@
  */
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var extractCSS = new ExtractTextPlugin('app-[hash].css');
 module.exports = {
-  entry: './src/app.js',
+  entry:  "./src/app.js",
   output: {
-    filename: "[name]-[hash].js",
+    filename: "app-[hash].js",
     path: __dirname + "./dist"
   },
   devServer: {
@@ -16,6 +17,9 @@ module.exports = {
     inline: true,
     hot: true,
     port: 8089
+  },
+  resolve: {
+     // extensions: ['.css', '.scss']
   },
   module: {
     loaders: [
@@ -28,12 +32,16 @@ module.exports = {
         loader: 'style-loader!css-loader'
       },
       {
-        test: /\.scss$/,
-        loader: 'style!css!sass?sourceMap'
+        test: /\.scss$/i,
+        loader: extractCSS.extract(['css','sass'])
       },
       {
         test: /\.html$/,
         loader: "html"
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader?mimetype=image/png"
       },
       {
         test: /\.js$/,
@@ -43,6 +51,7 @@ module.exports = {
     ]
   },
   plugins: [
+    extractCSS,
     new HtmlWebpackPlugin({
       template: __dirname + "/index.html"
     }),
