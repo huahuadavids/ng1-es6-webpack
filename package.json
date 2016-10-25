@@ -1,0 +1,37 @@
+{
+  "name": "ngWebpack",
+  "version": "1.0.0",
+  "description": "using es6 to write angular with webpack ang gulp",
+  "main": "./src/app.js",
+  "scripts": {
+    "dev": "webpack-dev-server ./src/app.js & gulp watch",
+    "build": "gulp"
+  },
+  "keywords": ["ng1 webpack gulp","angular webpack"],
+  "author": "huahuadavids",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "eslint-plugin-angular": "^1.4.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-sequence": "^0.4.6",
+    "gulp-webpack": "^1.5.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.24.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^3.10.1",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
