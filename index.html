@@ -2,14 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
     <meta name="author" content="David">
     <meta name="description" content="a web app">
-    <title>Title</title>
+    <title>angular app</title>
 </head>
 <body ng-app="app">
-<ul>
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
+<header>
+    hello world !
+</header>
+<ul id="nav">
+    <li>
+        <a href="#/view1">view1</a>
+    </li>
+    <li>
+        <a href="#/view2">view2</a>
+    </li>
 </ul>
 <div ng-controller="mainController">
     {{name}}

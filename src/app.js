@@ -1,5 +1,6 @@
 import angular from "angular";
 import "./reset/index.scss";
+import "./main.scss";
 import "angular-route";
 import "./view/view1/view1.js";
 import "./view/view2/view2.js";
