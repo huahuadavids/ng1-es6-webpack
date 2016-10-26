@@ -6,7 +6,7 @@ app.config(['$routeProvider', ($routeProvider) => {
     controller: 'view2Controller'
   });
 }])
-  .controller('view2Controller', ["$scope",($scope) => {
+  .controller('view2Controller', ["$scope", ($scope) => {
     $scope.name = "view2";
   }]);
 export default app;
