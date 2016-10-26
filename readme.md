@@ -4,8 +4,6 @@
 
 `$ npm run dev`    开发
 
-`$ npm run build` 生产
-
 `$ npm run dest`   压缩代码发布
 
 qq 1457896625
