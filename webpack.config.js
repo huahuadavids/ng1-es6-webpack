@@ -10,15 +10,14 @@ var path = require("path");
 var host = process.env.HOST || ip();
 var port = process.env.PORT || "8081";
 var url = "http://" + host + ":" + port;
-
-var config = {};
-
+var getPicLoader = require('./utils');
+var config = {}, imgs = ['png','jpg','gif','svg'];
 config.entry = [
   "webpack-dev-server/client?" + url,
   "webpack/hot/only-dev-server",
   "./src/app.js"
 ];
-
+config.devtool = 'source-map';
 config.output = {
   filename: "bundle.js",
   path: path.join(__dirname, "dist")
@@ -57,7 +56,7 @@ config.module = {
     },
     {
       test: /\.css$/,
-      loader: 'style-loader!css-loader'
+      loaders: ["style", "css"]
     },
     {
       test: /\.scss$/,
@@ -68,28 +67,18 @@ config.module = {
       loader: "html"
     },
     {
-      test: /\.gif$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: "url-loader?limit=10000&mimetype=image/gif"
-    },
-    {
-      test: /\.jpg$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: "url-loader?limit=10000&mimetype=image/jpg"
-    },
-    {
-      test: /\.png$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: "url-loader?limit=10000&mimetype=image/png"
-    },
-    {
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
-      loader: 'babel?presets[]=es2015'
+      loader: 'babel',
+      query: {
+        presets: ['es2015']
+      }
     }
   ]
 }
-
+imgs.forEach(function(img){
+  config.module.loaders.push(getPicLoader(img))
+})
 config.plugins = [
   new webpack.DefinePlugin({
     'process.env': {

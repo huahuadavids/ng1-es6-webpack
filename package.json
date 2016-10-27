@@ -5,7 +5,7 @@
   "main": "./src/app.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "dest": "gulp"
+    "dest": "webpack --config webpack.prod.js"
   },
   "keywords": [
     "ng1 webpack gulp",
