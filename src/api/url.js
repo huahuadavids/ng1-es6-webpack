@@ -1,3 +1,4 @@
+import {HOSTPATH} from "../config.js";
 export default {
-  "shop":""
+  "shop": `${HOSTPATH}shop`
 }

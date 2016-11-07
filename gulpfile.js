@@ -1,12 +1,12 @@
-var gulp      = require("gulp");
-var uglify    = require("gulp-uglify");
-var webpack   = require("gulp-webpack");
-var eslint    = require("gulp-eslint");
-var sequence  = require("gulp-sequence");
-var config    = require("./webpack.prod");
-var clean     = require("gulp-clean");
-var cleanCss  = require("gulp-clean-css");
-var htmlmin   = require('gulp-htmlmin');
+var gulp      =   require("gulp");
+var uglify    =   require("gulp-uglify");
+var webpack   =   require("gulp-webpack");
+var eslint    =   require("gulp-eslint");
+var sequence  =   require("gulp-sequence");
+var config    =   require("./webpack.prod");
+var clean     =   require("gulp-clean");
+var cleanCss  =   require("gulp-clean-css");
+var htmlmin   =   require('gulp-htmlmin');
 
 gulp.task("webpack", function () {
   return gulp.src("./src/app.js")
@@ -34,7 +34,7 @@ gulp.task("uglify",function(){
 
 gulp.task("minifyCss",function(){
   return gulp.src("./dist/*.css")
-    .pipe(cleanCss())
+    .pipe (cleanCss())
     .pipe(gulp.dest("./dist"))
 })
 

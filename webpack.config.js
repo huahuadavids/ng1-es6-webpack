@@ -11,7 +11,7 @@ var host = process.env.HOST || ip();
 var port = process.env.PORT || "8081";
 var url = "http://" + host + ":" + port;
 var getPicLoader = require('./utils');
-var config = {}, imgs = ['png','jpg','gif','svg'];
+var config = {}, imgs = ['png', 'jpg', 'gif', 'svg'];
 config.entry = [
   "webpack-dev-server/client?" + url,
   "webpack/hot/only-dev-server",
@@ -36,10 +36,15 @@ config.devServer = {
 
 config.resolve = {
   // extensions: ['.css', '.scss']
-  // alias: {
-  //   'src': path.resolve(__dirname, '../src')
-  // }
+  alias: {
+    'src': path.join(__dirname, 'src')
+  }
 }
+config.resolve = {
+  root: path.resolve('src'),
+  modulesDirectories: ['node_modules'],
+  extensions: ['', '.js', '.jsx']
+};
 
 config.module = {
   preLoaders: [
@@ -76,7 +81,7 @@ config.module = {
     }
   ]
 }
-imgs.forEach(function(img){
+imgs.forEach(function (img) {
   config.module.loaders.push(getPicLoader(img))
 })
 config.plugins = [

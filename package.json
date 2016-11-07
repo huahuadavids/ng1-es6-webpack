@@ -5,7 +5,8 @@
   "main": "./src/app.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "dest": "webpack --config webpack.prod.js"
+    "dest": "gulp",
+    "dll": "webpack webpack.dll.config.js"
   },
   "keywords": [
     "ng1 webpack gulp",
@@ -15,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.8",
-    "angular-route": "^1.5.8"
+    "angular-ui-router": "^0.3.2"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",

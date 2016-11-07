@@ -5,18 +5,21 @@
  */
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var extractTextPlugin = require('extract-text-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-var extractCSS = new ExtractTextPlugin('app-[hash].css');
+// var extractCSS = new ExtractTextPlugin('app-[hash].css');
 var path = require("path");
 var config = {}, imgs = ['png','jpg','gif','svg'];
 var getPicLoader = require('./utils');
 
-config.entry = "./src/app.js";
+config.entry = {
+  index : "./src/index.js",
+  vendor : ["angular"]
+};
 config.output = {
-  filename: "app-[hash].js",
-  path: path.join(__dirname ,"dist")
-  // chunkFilename: '[id].bundle.js'
+  filename: "app-[hash:8].js",
+  path: path.join(__dirname ,"dist"),
+  chunkFilename: '[chunkhash].bundle.js'
 }
 config.resolve = {}
 
@@ -32,7 +35,7 @@ config.module ={
     },
     {
       test: /\.scss$/i,
-      loader: extractCSS.extract(['css','sass'])
+      loader: extractTextPlugin.extract(['css','sass'])
     },
     {
       test: /\.html$/,
@@ -51,7 +54,8 @@ imgs.forEach(function(img){
 })
 
 config.plugins =  [
-  extractCSS,
+  // extractCSS,
+  new extractTextPlugin("app-[hash:8].css"),
   new WebpackCleanupPlugin(),
   new webpack.optimize.DedupePlugin(), //重复数据删除
   new webpack.optimize.OccurenceOrderPlugin(), // 同样是优化文件大小
@@ -66,10 +70,11 @@ config.plugins =  [
     }
   }),
   new webpack.HotModuleReplacementPlugin(),
+  new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor-[hash:8].js'),
   // new webpack.optimize.CommonsChunkPlugin('common.bundle.js'),
   new webpack.optimize.UglifyJsPlugin({
     mangle: { // 排除不想要压缩的对象名称
-      except: ['$', 'exports', 'require', 'module', '_']
+      except: ['$', 'exports', 'require', 'module', 'angular']
     },
     compress: {
       warnings: false,

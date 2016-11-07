@@ -1,7 +1,8 @@
 import "./view2.scss";
-let app = angular.module('view2', ['ngRoute']);
-app.config(['$routeProvider', ($routeProvider) => {
-  $routeProvider.when('/view2', {
+let app = angular.module('view2', ['ui.router']);
+app.config(['$stateProvider', ($stateProvider) => {
+  $stateProvider.state('view2', {
+    url:"./view2",
     template: require("./view2.html"),
     controller: 'view2Controller'
   });
