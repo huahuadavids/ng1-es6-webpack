@@ -33,17 +33,17 @@ config.devServer = {
   host: host,
   port: port
 }
-
 config.resolve = {
-  // extensions: ['.css', '.scss']
-  alias: {
-    'src': path.join(__dirname, 'src')
-  }
-}
-config.resolve = {
-  root: path.resolve('src'),
   modulesDirectories: ['node_modules'],
-  extensions: ['', '.js', '.jsx']
+  extensions: ['', '.js', '.jsx'],
+  alias : {
+    'templates': path.join(__dirname ,'src/templates'),
+    'modules': path.join(__dirname ,'src/modules'),
+    'routes': path.join(__dirname ,'src/routes'),
+    'reset': path.join(__dirname ,'src/reset'),
+    'view': path.join(__dirname ,'src/view'),
+    'styles': path.join(__dirname ,'src/styles')
+  }
 };
 
 config.module = {

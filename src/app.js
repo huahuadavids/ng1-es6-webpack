@@ -1,9 +1,9 @@
 import angular from "angular";
-import "./reset/index.scss";
-import "./main.scss";
+import "styles/index.scss";
+import "styles/main.scss";
 import "angular-ui-router";
-import "./view/view1/view1.js";
-import "./view/view2/view2.js";
+import "modules/view1.js";
+import "modules/view2.js";
 
 
 let app = angular.module("app", ['ui.router', 'view1', 'view2']);

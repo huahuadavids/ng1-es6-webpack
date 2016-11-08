@@ -1,12 +1,8 @@
-import "./view1.scss";
-let angular = require("angular");
+import "styles/view1.scss";
+import {view1} from "routes/index";
 let view1App = angular.module('view1', ['ui.router'])
   .config(['$stateProvider', ($stateProvider) => {
-    $stateProvider.state('view1', {
-      url:"./view1",
-      template: require("./view1.html"),
-      controller: 'view1Controller'
-    });
+    $stateProvider.state(view1);
   }])
   .controller('view1Controller', ["$scope", ($scope) => {
     $scope.name = "view1";

@@ -53,6 +53,19 @@ imgs.forEach(function(img){
   config.module.loaders.push(getPicLoader(img))
 })
 
+config.resolve = {
+  modulesDirectories: ['node_modules'],
+  extensions: ['', '.js', '.jsx'],
+  alias : {
+    'templates': path.join(__dirname ,'src/templates'),
+    'modules': path.join(__dirname ,'src/modules'),
+    'routes': path.join(__dirname ,'src/routes'),
+    'reset': path.join(__dirname ,'src/reset'),
+    'view': path.join(__dirname ,'src/view'),
+    'styles': path.join(__dirname ,'src/styles')
+  }
+};
+
 config.plugins =  [
   // extractCSS,
   new extractTextPlugin("app-[hash:8].css"),
